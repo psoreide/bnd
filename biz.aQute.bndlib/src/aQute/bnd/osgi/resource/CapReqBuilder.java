@@ -55,11 +55,12 @@ public class CapReqBuilder {
 	private final Map<String, String>	directives							= new HashMap<>();
 
 	public CapReqBuilder(String namespace) {
+		Objects.requireNonNull(namespace, "Namespace must not be null");
 		this.namespace = namespace;
 	}
 
 	public CapReqBuilder(String ns, Attrs attrs) throws Exception {
-		this.namespace = ns;
+		this(ns);
 		for (Entry<String, String> entry : attrs.entrySet()) {
 			String key = entry.getKey();
 			if (key.endsWith(":"))
